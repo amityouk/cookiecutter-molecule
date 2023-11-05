@@ -15,7 +15,7 @@
       vpc: vpc-036f71944d09d2588
 
     device_name: "/dev/xvdf"
-    vol_name: "instance-{% endraw %}{{ cookiecutter.role_name }}{% raw %}"
+    vol_name: "instance-{% endraw %}{{ cookiecutter-molecule }}{% raw %}"
     vol_size: 8
     vol_del_term: "true"
     vol_type: "standard"
@@ -53,7 +53,7 @@
         to_port: 0
         cidr_ip: '0.0.0.0/0'
 
-    keypair_name: "molecule_key-{{ ansible_machine_id }}-{% endraw %}{{ cookiecutter.role_name }}{% raw %}"
+    keypair_name: "molecule_key-{{ ansible_machine_id }}-{% endraw %}{{ cookiecutter-molecule }}{% raw %}"
     keypair_path: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/ssh_key"
   tasks:
     - include: security_group.yml
@@ -148,7 +148,7 @@
         state: present
         tags:
           Charge_Code: "12345"
-          Environment: "molecule-{% endraw %}{{ cookiecutter.role_name }}{% raw %}"
+          Environment: "molecule-{% endraw %}{{ cookiecutter-molecule }}{% raw %}"
           OpCo: "Shared"
           Service: "Molecule"
           Name: "{{ vol_name }}"
